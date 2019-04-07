@@ -45,14 +45,5 @@
     "build": "webpack --mode production"
   },
   "author": "",
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mokka86coffee/template_webpack.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mokka86coffee/template_webpack/issues"
-  },
-  "homepage": "https://github.com/mokka86coffee/template_webpack#readme",
-  "keywords": []
+  "description": ""
 }
