@@ -34,15 +34,15 @@ export default class Sandbox extends React.Component {
             canvCtx.drawImage(image, 0, 0);
             let rawImgData = canvCtx.getImageData(0,0, width, height );
 
-            console.time('imgFilter');
-			for (let idx=0; idx<rawImgData['data'].length; idx+=4) {
-                for (let m=0; m<10000; m++) {
-                    let k = m;
-                    rawImgData['data'][idx] = 0;
-                }
-            };
-            console.timeEnd('imgFilter');
-            canvCtx.putImageData(rawImgData,0,0);
+            // console.time('imgFilter');
+			// for (let idx=0, l=rawImgData['data'].length; idx<l; idx+=4) {
+            //     for (let m=0; m<10000; m++) {
+            //         let k = m;
+            //         rawImgData['data'][idx] = 0;
+            //     }
+            // };
+            // console.timeEnd('imgFilter');
+            // canvCtx.putImageData(rawImgData,0,0);
             
             console.time('worker');
             const worker = new Worker('./worker.js');
@@ -52,6 +52,7 @@ export default class Sandbox extends React.Component {
                 canvCtx.putImageData(data,0,0);
                 worker.terminate();
             };
+            canvCtx.putImageData(rawImgData,0,0);
         });
     }
 
@@ -61,7 +62,7 @@ export default class Sandbox extends React.Component {
                 <Router>
                     <>
                         <input type="file" accept="image/*" onChange={this.fileInputHandler}/>
-                        <canvas style={{display: 'none'}} ref={r => (this.canv = r, this.canvCtx = this.canv.getContext('2d'))}></canvas>
+                        <canvas ref={r => (this.canv = r, this.canvCtx = this.canv.getContext('2d'))}></canvas>
                         <Switch>
                             <Route path='/' exact component={DblRange} />
                         </Switch>
