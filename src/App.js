@@ -44,19 +44,18 @@ export default class Sandbox extends React.Component {
             console.timeEnd('imgFilter');
             canvCtx.putImageData(rawImgData,0,0);
             
-            // console.time('worker');
-            // const worker = new Worker('./worker.js');
-            // worker.postMessage(rawImgData);
-            // worker.onmessage = ({data}) => {
-            //     console.timeEnd('worker');
-            //     canvCtx.putImageData(data,0,0);
-            //     worker.terminate();
-            // };
+            console.time('worker');
+            const worker = new Worker('./worker.js');
+            worker.postMessage(rawImgData);
+            worker.onmessage = ({data}) => {
+                console.timeEnd('worker');
+                canvCtx.putImageData(data,0,0);
+                worker.terminate();
+            };
         });
     }
 
     render() {
-        // console.log('app, props - ', this.props);
         return (
             <Provider store={store}>
                 <Router>
