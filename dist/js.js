@@ -10,8 +10,6 @@ crossBrowserFetch('https://api1.remontista.ru/tools/all_work_type')
         //                             types: Object.keys(res.work_types)
         //                             }
         //                 })
-    } else {
-        throw new Error('Got error from fetch');
     }
 })        
 .catch(err=>console.log(err));
@@ -34,7 +32,6 @@ function crossBrowserFetch(link) {
     } else {
         return fetch('https://api1.remontista.ru/tools/all_work_type')
                 .then(res=>res.json())
-                .catch(err=>err)
     } 
 }
 

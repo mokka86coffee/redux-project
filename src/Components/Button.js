@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Button.scss';
-
 const Button = ({
     children, onClick, className, disabled, active, ...attributes
 }) => {

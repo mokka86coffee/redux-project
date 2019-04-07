@@ -152,8 +152,4 @@ function normalize(applicationData) {
  
 let result = normalize(applicationData);
 
-for (let i of expectedFormValues) {
-    console.log (i);
-}
-
 console.log(JSON.stringify(result) == JSON.stringify(expectedFormValues));
