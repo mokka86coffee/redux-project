@@ -1,3 +1,4 @@
+{/*
 
 crossBrowserFetch('https://api1.remontista.ru/tools/all_work_type')
 .then(res=>{
@@ -34,7 +35,6 @@ function crossBrowserFetch(link) {
                 .then(res=>res.json())
     } 
 }
-
 function exportFromFetch(fetchedArray) {
     let worksAsArray = Object.keys(fetchedArray).reduce((res, el) => [...res, { [el]: fetchedArray[el] }], []);
     let id = 0;
@@ -77,3 +77,21 @@ if (localStorage.getItem('work_types')) {
     
     
 }
+
+*/}
+
+async function simulateApi () {
+    return new Promise( 
+      resolve => setTimeout( () => {
+            resolve( 
+              Array(10).fill(
+                {
+                    id: Math.random() + Date.now() + '',
+                    name: (new Date).getMonth()
+                }
+              )
+            )
+      }), 1000 ) //
+}
+
+(async() => console.log(await simulateApi()))
