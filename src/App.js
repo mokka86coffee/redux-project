@@ -3,22 +3,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { fetchParts, fetchPartsDone } from './reducers/actions';
+import { fetchWorkTypes, fetchWorkTypesDone, fetchWorkTypesAsync } from './reducers/actions';
 
 const enchancer = connect(
     ({ workTypes }) => ({ workTypes }),
-    { fetchParts, fetchPartsDone }
+    { fetchWorkTypes, fetchWorkTypesDone, fetchWorkTypesAsync }
 );
 
 class App extends React.Component {
 
     async componentDidMount() {
-        this.props.fetchParts();
-        // this.props.fetchParts(axios.get('https://api1.remontista.ru/tools/all_work_type'));
+        // this.props.fetchWorkTypes();
         
-        let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
+        // let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
         
-        this.props.fetchPartsDone(result.data);
+        // this.props.fetchWorkTypesDone(result.data);
+
+        this.props.fetchWorkTypesAsync();
     }
 
     handleClick = () => {
