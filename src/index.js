@@ -6,6 +6,6 @@ import './index.scss';
 import { Provider } from 'react-redux';
 import store from './reduxStore';
 
-ReactDOM.render(<Provider store={store}><App test='test' /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
 // import {Parody} from './Parody';
