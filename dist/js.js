@@ -80,18 +80,4 @@ if (localStorage.getItem('work_types')) {
 
 */}
 
-async function simulateApi () {
-    return new Promise( 
-      resolve => setTimeout( () => {
-            resolve( 
-              Array(10).fill(
-                {
-                    id: Math.random() + Date.now() + '',
-                    name: (new Date).getMonth()
-                }
-              )
-            )
-      }), 1000 ) //
-}
 
-(async() => console.log(await simulateApi()))
