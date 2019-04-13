@@ -3,14 +3,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { fetchParts, fetchPartsDone } from './reducers/actions';
 
+const enchancer = connect(
+    state => state,
+    { fetchParts, fetchPartsDone }
+);
 
 class App extends React.Component {
 
     async componentDidMount() {
-        let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
-		console.log("TCL: Sandbox -> componentDidMount -> result", result)
+        this.props.fetchParts();
         
+        let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
+        
+        this.props.fetchPartsDone( result.data );
     }
 
     handleClick = () => {
@@ -28,4 +35,4 @@ class App extends React.Component {
     }
 }
 
-export default connect(store => store)(App)
+export default enchancer(App);

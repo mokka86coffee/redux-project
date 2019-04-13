@@ -1,8 +1,8 @@
-import { createStore } from 'redux';
 import middleware from '../middewares';
+import reducer from '../reducers';
 
 const store = {
-    parts: []
+    workTypes: []
 }
 
 export default createStore(
