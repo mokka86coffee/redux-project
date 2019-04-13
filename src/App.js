@@ -14,6 +14,7 @@ class App extends React.Component {
 
     async componentDidMount() {
         this.props.fetchParts();
+        // this.props.fetchParts(axios.get('https://api1.remontista.ru/tools/all_work_type'));
         
         let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
         
