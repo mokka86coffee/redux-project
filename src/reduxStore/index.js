@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import middleware from '../middewares';
+import * as middlewares from '../middewares';
 import reducer from '../reducers';
 
 const store = {
@@ -9,5 +9,5 @@ const store = {
 export default createStore(
     reducer,
     store,
-    middleware
+    ...middlewares
 );
