@@ -25,7 +25,6 @@ class App extends React.Component {
     }
 
     render() {
-		console.log("TCL: App -> render -> this.props", this.props)
         return (
             <div className="main" onClick={ this.handleClick }>                                       
                 <div className="ins"></div>
