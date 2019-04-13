@@ -1,7 +1,6 @@
 import React from 'react';
 // import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom';
-import  { Provider } from 'react-redux';
-import  { createStore } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -29,4 +28,4 @@ class App extends React.Component {
     }
 }
 
-export default connect(sttore => store)(App)
+export default connect(store => store)(App)
