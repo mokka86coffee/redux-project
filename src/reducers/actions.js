@@ -12,7 +12,12 @@ export function fetchPartsDone( fetchedBody ) {
     if ( fetchedBody.result === 'success' ) {
         return {
             type: DONE_FETCHING_WORK_TYPES,
-            payload: { parts: work_types }
-          };
+            payload: { workTypes: fetchedBody.work_types }
+          }
+    } else {
+        return {
+            type: ERROR_FETCHING_WORK_TYPES,
+            payload: { parts: ['smth went wrong'] }
+          }
     }
 }

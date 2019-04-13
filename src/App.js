@@ -6,7 +6,7 @@ import axios from 'axios';
 import { fetchParts, fetchPartsDone } from './reducers/actions';
 
 const enchancer = connect(
-    state => state,
+    ({ workTypes }) => ({ workTypes }),
     { fetchParts, fetchPartsDone }
 );
 
@@ -17,7 +17,7 @@ class App extends React.Component {
         
         let result = await axios.get('https://api1.remontista.ru/tools/all_work_type');
         
-        this.props.fetchPartsDone( result.data );
+        this.props.fetchPartsDone(result.data);
     }
 
     handleClick = () => {
@@ -25,10 +25,9 @@ class App extends React.Component {
     }
 
     render() {
+		console.log("TCL: App -> render -> this.props", this.props)
         return (
-            <div className="main" onClick={this.handleClick}>                                       
-                <div className="ins"></div>
-                <div className="ins"></div>
+            <div className="main" onClick={ this.handleClick }>                                       
                 <div className="ins"></div>
             </div>  
         )
