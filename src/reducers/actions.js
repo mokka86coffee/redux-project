@@ -6,7 +6,7 @@ export const ERROR_FETCHING_WORK_TYPES = 'ERROR_FETCHING_WORK_TYPES';
 
 export function fetchWorkTypesAsync (settings = undefined) {
     return async dispatch => {
-        dispatch({ type: FETCHING_WORK_TYPES , isLoading: true });
+        dispatch({ type: FETCHING_WORK_TYPES , payload: { isLoading: true } });
         
         try {
             const fetchedBody = await fetch('https://api1.remontista.ru/tools/all_work_type', settings);

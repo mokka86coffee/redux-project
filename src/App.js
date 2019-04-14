@@ -8,7 +8,7 @@ import Link from './Components/Link';
 import Button from './Components/Button';
 
 const enchancer = connect(
-    ({ workTypes }) => ({ workTypes }),
+    ({ workTypes, isLoading }) => ({ workTypes, isLoading }),
     { fetchWorkTypesAsync }
 );
 
@@ -19,9 +19,9 @@ class App extends React.Component {
 
     FetchON = () => {
         const { isLoading } = this.props;
-		console.log("TCL: App -> FetchON -> this.props", this.props)
 
         if ( !isLoading ) {
+			console.log("TCL: App -> FetchON -> isLoading", isLoading)
             this.controller = new AbortController();
             const signal = this.controller.signal;
             this.props.fetchWorkTypesAsync({signal});
