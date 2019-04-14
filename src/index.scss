@@ -18,3 +18,31 @@ body {
       width: 100%;
       height: 100px;
   }
+
+  [href="#testurl"] {
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+
+      &:hover {
+          color: #fff;
+      }
+
+      &::before {
+        content: 'testTitle';
+        position: absolute;
+        top: 0; left: 0;
+        width: 0;
+        height: auto;
+        overflow: hidden;
+        color: #000;
+      }
+
+      &:hover::before {
+        transition: width 2s;
+        width: 200px;
+      }
+  }
