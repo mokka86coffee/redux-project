@@ -3,7 +3,8 @@ import middlewares from '../middewares';
 import reducer from '../reducers';
 
 const store = {
-    workTypes: []
+    workTypes: [],
+    isLoading: false
 }
 
 export default createStore(

@@ -6,18 +6,19 @@ export const ERROR_FETCHING_WORK_TYPES = 'ERROR_FETCHING_WORK_TYPES';
 
 export function fetchWorkTypesAsync (settings = undefined) {
     return async dispatch => {
-        dispatch({ type: FETCHING_WORK_TYPES });
+        dispatch({ type: FETCHING_WORK_TYPES , isLoading: true });
         
         try {
-            let fetchedBody = await fetch('https://api1.remontista.ru/tools/all_work_type', settings);
+            const fetchedBody = await fetch('https://api1.remontista.ru/tools/all_work_type', settings);
+            const json = await fetchedBody.json();
             dispatch({
                 type: DONE_FETCHING_WORK_TYPES,
-                payload: { workTypes: fetchedBody.data.work_types }
+                payload: { workTypes: json.work_types , isLoading: false }
             }); 
         } catch (err) {
             dispatch({
                 type: ERROR_FETCHING_WORK_TYPES,
-                payload: { workTypes: [`can't do it`] }
+                payload: { workTypes: [err] , isLoading: false }
             }); 
         }
         

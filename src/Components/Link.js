@@ -5,4 +5,8 @@ Link.propTypes = {
   title: string.isRequired,
   url: string.isRequired
 };
+Link.defaultProps = {
+  title: 'testTitle',
+  url: '#testurl'
+};
 export default Link;

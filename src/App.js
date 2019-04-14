@@ -18,14 +18,21 @@ class App extends React.Component {
     }
 
     FetchON = () => {
-        this.controller = new AbortController();
-        const signal = this.controller.signal;
-        this.props.fetchWorkTypesAsync({signal});
+        const { isLoading } = this.props;
+		console.log("TCL: App -> FetchON -> this.props", this.props)
+
+        if ( !isLoading ) {
+            this.controller = new AbortController();
+            const signal = this.controller.signal;
+            this.props.fetchWorkTypesAsync({signal});
+        }
     }
 
     FetchOFF = () => {
-        this.controller.abort();
-        this.controller = null;
+        if(this.controller) {
+            this.controller.abort();
+            this.controller = null;
+        }
     }
 
     render() {
@@ -34,6 +41,7 @@ class App extends React.Component {
                 <div className="ins"></div>
                 <Button onClick={this.FetchON}> Fetch </Button>
                 <Button onClick={this.FetchOFF}> Cancel fetch </Button>
+                <Link  />
             </div>  
         )
     }
