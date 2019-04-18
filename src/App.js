@@ -36,6 +36,7 @@ class App extends React.Component {
     }
 
     render() {
+
         return (
             <div className="main" onClick={ this.handleClick }>                                       
                 <div className="ins"></div>

@@ -11,7 +11,7 @@ const Button = ({
         className,
         { active }
     );
-
+    console.log(attributes)
     return (
         <button
             {...attributes}
